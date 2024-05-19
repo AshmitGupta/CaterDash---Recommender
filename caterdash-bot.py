@@ -5,6 +5,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 from dotenv import load_dotenv
 import openai
 import os
+import json
 
 app = Flask(__name__)
 
@@ -166,7 +167,7 @@ def chat():
     )
     
     if chat_response.choices[0].finish_reason == "tool_calls":
-        tool_data = chat_response.choices[0].message.tool_calls[0].function.arguments
+        tool_data = json.loads(chat_response.choices[0].message.tool_calls[0].function.arguments)
         budget = tool_data['budget']
         number_of_people = tool_data['number_of_people']
         meal_preference = tool_data['meal_preference']

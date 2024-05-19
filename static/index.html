@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h2 style="font-family: Poppins; font-size: 40px;">Caterdash Chat</h2>
-        <div class="chat-box" id="chat-box">
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Caterdash Assistant</h2>
+        </div>
+        <div class="chat-messages" id="chat-messages">
             <!-- Chat messages will appear here -->
         </div>
-        <input type="text" id="message-input" placeholder="Type your message here...">
-        <button id="send-button">Send</button>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message here...">
+            <button id="send-button">Send</button>
+        </div>
     </div>
     <script src="static/script.js"></script>
 </body>

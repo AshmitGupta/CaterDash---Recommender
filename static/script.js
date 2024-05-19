@@ -1,4 +1,4 @@
-const chatBox = document.getElementById('chat-box');
+const chatMessages = document.getElementById('chat-messages');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 
@@ -22,9 +22,12 @@ sendButton.addEventListener('click', async () => {
 });
 
 function appendMessage(role, text) {
-    const message = document.createElement('div');
-    message.className = `message ${role}`;
-    message.textContent = text;
-    chatBox.appendChild(message);
-    chatBox.scrollTop = chatBox.scrollHeight;
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${role}`;
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = `chat-bubble ${role}`;
+    bubbleDiv.textContent = text;
+    messageDiv.appendChild(bubbleDiv);
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }

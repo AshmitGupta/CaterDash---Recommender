@@ -4,6 +4,7 @@ import random
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 from dotenv import load_dotenv
 import openai
+import os
 
 app = Flask(__name__)
 

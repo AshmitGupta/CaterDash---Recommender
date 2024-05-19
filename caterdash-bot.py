@@ -128,15 +128,17 @@ def chat_completion_request(messages, tools=None, tool_choice=None, model=GPT_MO
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
-    user_message = data.get('message')
+    user_message = data.get('messages')
 
-    messages = [
-        {"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."},
-        {"role": "user", "content": user_message}
-    ]
-    
+
+    # messages = [
+    #     {"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."},
+    #     {"role": "system", "content": "Don't answer anything that is not related to catering or CaterDash. For anything that you don't have the info for, direct them to www.caterdash.ca"},
+    #     {"role": "user", "content": user_message}
+    # ]
+
     chat_response = chat_completion_request(
-        messages,
+        user_message,
         tools=[
             {
                 "type": "function",
